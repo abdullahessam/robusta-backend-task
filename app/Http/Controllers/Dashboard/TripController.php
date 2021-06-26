@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\DataTables\TripDataTable;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Dashboard\Trip\StoreRequest;
+use App\Http\Requests\Dashboard\Trip\UpdateRequest;
+use App\Models\Bus;
+use App\Models\Line;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 
 class TripController extends Controller
@@ -15,7 +21,7 @@ class TripController extends Controller
      */
     public function index(TripDataTable $dataTable)
     {
-        return  $dataTable->render();
+        return  $dataTable->render('dashboard.trips.index');
     }
 
     /**
@@ -25,7 +31,9 @@ class TripController extends Controller
      */
     public function create()
     {
-        //
+        $buses=Bus::pluck('name','id');
+        $lines=Line::pluck('name','id');
+        return  view('dashboard.trips.create')->with('buses',$buses)->with('lines',$lines);
     }
 
     /**
@@ -34,21 +42,13 @@ class TripController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        Trip::create($request->validated());
+        alert()->success('trip created successfully !');
+        return  back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,9 +56,15 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trip $trip)
     {
-        //
+        $buses=Bus::pluck('name','id');
+        $lines=Line::pluck('name','id');
+        return  view('dashboard.trips.edit')->with([
+            'trip'=>$trip,
+            'buses'=>$buses,
+            'lines'=>$lines
+        ]);
     }
 
     /**
@@ -68,9 +74,11 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Trip $trip)
     {
-        //
+        $trip->update($request->validated());
+        alert()->success('trip updated successfully !');
+        return  back();
     }
 
     /**
@@ -79,8 +87,14 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trip $trip)
     {
-        //
+        if ($trip->reservations()->exists()){
+            alert()->error('cannot delete trips because there is reservations ');
+            return  back();
+        }
+        $trip->delete();
+        alert()->success('trip created successfully !');
+        return  back();
     }
 }

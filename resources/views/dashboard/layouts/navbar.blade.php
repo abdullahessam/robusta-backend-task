@@ -125,6 +125,29 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item  {{Route::is('trips*')?'menu-open ':''}}">
+            <a href="#" class="nav-link {{Route::is('trips*')?' active':''}} ">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                     trips
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{route('trips.index')}}" class="nav-link ">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>all trips</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('trips.create')}}" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>create new bus</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item  {{Route::is('reservations*')?'menu-open ':''}}">
             <a href="#" class="nav-link {{Route::is('users*')?' active':''}} ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>

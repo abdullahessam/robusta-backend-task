@@ -23,6 +23,7 @@ Route::resources([
     'users'=>\App\Http\Controllers\Dashboard\UserController::class,
     'buses'=>\App\Http\Controllers\Dashboard\BusController::class,
     'admins'=>\App\Http\Controllers\Dashboard\AdminController::class,
-    'reservations'=>\App\Http\Controllers\Dashboard\ReservationController::class
+    'reservations'=>\App\Http\Controllers\Dashboard\ReservationController::class,
+    'trips'=>\App\Http\Controllers\Dashboard\TripController::class
 ]);
 require __DIR__.'/auth.php';
