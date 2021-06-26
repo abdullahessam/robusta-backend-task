@@ -19,5 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resources([
-    'reservations'=>\App\Http\Controllers\Api\ReservationController::class
+    'reservations'=>\App\Http\Controllers\Api\ReservationController::class,
+    'cities'=>\App\Http\Controllers\Api\CityController::class
 ]);
