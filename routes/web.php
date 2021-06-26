@@ -13,17 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['middleware' => 'auth:admin'], function () {
 
-Route::resources([
-    'cities'=>\App\Http\Controllers\Dashboard\BusController::class,
-    'lines'=>\App\Http\Controllers\Dashboard\LineController::class,
-    'users'=>\App\Http\Controllers\Dashboard\UserController::class,
-    'buses'=>\App\Http\Controllers\Dashboard\BusController::class,
-    'admins'=>\App\Http\Controllers\Dashboard\AdminController::class,
-    'reservations'=>\App\Http\Controllers\Dashboard\ReservationController::class,
-    'trips'=>\App\Http\Controllers\Dashboard\TripController::class
-]);
-require __DIR__.'/auth.php';
+    Route::get('/', \App\Http\Controllers\Dashboard\IndexController::class)->name('index');
+
+    Route::resources([
+        'cities' => \App\Http\Controllers\Dashboard\BusController::class,
+        'lines' => \App\Http\Controllers\Dashboard\LineController::class,
+        'users' => \App\Http\Controllers\Dashboard\UserController::class,
+        'buses' => \App\Http\Controllers\Dashboard\BusController::class,
+        'admins' => \App\Http\Controllers\Dashboard\AdminController::class,
+        'reservations' => \App\Http\Controllers\Dashboard\ReservationController::class,
+        'trips' => \App\Http\Controllers\Dashboard\TripController::class
+    ]);
+
+});
+require __DIR__ . '/auth.php';

@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
             ReservationsTableSeeder::class
 
         ]);
+        $this->call(AdminsTableSeeder::class);
     }
 }
