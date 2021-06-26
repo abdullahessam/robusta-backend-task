@@ -27,9 +27,11 @@ class City extends Model
 {
     use HasFactory;
 
+    protected $fillable =['name'];
+
     public function lines()
     {
-       return $this->belongsToMany(Line::class,LineCity::class);
+        return $this->belongsToMany(Line::class, LineCity::class);
     }
 
     public function line_cities()

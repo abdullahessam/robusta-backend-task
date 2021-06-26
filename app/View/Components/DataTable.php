@@ -11,13 +11,12 @@ class DataTable extends Component
      *
      * @return void
      */
-    public $dataTable, $title, $route;
+    public $dataTable, $title;
 
-    public function __construct($dataTable,$title,$route)
+    public function __construct($dataTable,$title)
     {
         $this->dataTable=$dataTable;
         $this->title = $title;
-        $this->route = $route;
     }
 
     /**

@@ -18,6 +18,11 @@ Route::get('/', function () {
 });
 
 Route::resources([
-    'cities'=>\App\Http\Controllers\Dashboard\CityController::class
+    'cities'=>\App\Http\Controllers\Dashboard\BusController::class,
+    'lines'=>\App\Http\Controllers\Dashboard\LineController::class,
+    'users'=>\App\Http\Controllers\Dashboard\UserController::class,
+    'buses'=>\App\Http\Controllers\Dashboard\BusController::class,
+    'admins'=>\App\Http\Controllers\Dashboard\AdminController::class,
+    'reservations'=>\App\Http\Controllers\Dashboard\ReservationController::class
 ]);
 require __DIR__.'/auth.php';

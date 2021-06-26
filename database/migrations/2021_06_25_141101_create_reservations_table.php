@@ -16,7 +16,7 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Trip::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('user_name');
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('dispatch_city_id')->constrained('cities')->cascadeOnDelete()->cascadeOnDelete();
             $table->foreignId('destination_city_id')->constrained('cities')->cascadeOnDelete()->cascadeOnDelete();
             $table->unsignedInteger('seat_no');

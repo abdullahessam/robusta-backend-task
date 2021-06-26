@@ -2,6 +2,6 @@
 
 
 @section('content')
-<x-data-table  :dataTable="$dataTable" title="test" route="test"/>
+<x-data-table  :dataTable="$dataTable" title="index cities" />
     @endsection
 

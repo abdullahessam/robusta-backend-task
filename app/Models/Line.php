@@ -30,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
 class Line extends Model
 {
     use HasFactory;
-
+protected $fillable=['name'];
     public function cities()
     {
         return $this->belongsToMany(City::class, LineCity::class)->withPivot('order');

@@ -30,7 +30,7 @@ class ReservationsTableSeeder extends Seeder
                 'seat_no' => 1,
                 'trip_id' => 1,
                 'updated_at' => NULL,
-                'user_name' => 'ahmed',
+                'user_id' => 1,
             ),
             1 =>
             array (
@@ -43,7 +43,7 @@ class ReservationsTableSeeder extends Seeder
                 'seat_no' => 2,
                 'trip_id' => 1,
                 'updated_at' => NULL,
-                'user_name' => 'sayed',
+                'user_id' => 1,
             ),
             2 =>
             array (
@@ -56,7 +56,7 @@ class ReservationsTableSeeder extends Seeder
                 'seat_no' => 3,
                 'trip_id' => 1,
                 'updated_at' => NULL,
-                'user_name' => 'abdullah',
+                'user_id' => 1,
             ),
         ));
 
