@@ -9,7 +9,6 @@ class CityOrder extends Component
 {
     public $line;
     public $cities = [];
-    public $updateMode = false;
     public $order = [];
     public $city_id = [];
     public $i = 0;
@@ -18,10 +17,6 @@ class CityOrder extends Component
 
     public function add($i)
     {
-        $validatedDate = $this->validate([
-            'city_id.' . $i + 1 => `required|string`,
-            'order.' . $i + 1 => `required|integer|min:1`,
-        ]);
         $i = $i + 1;
         $this->i = $i;
 
@@ -30,15 +25,21 @@ class CityOrder extends Component
 
     public function remove($i)
     {
-        unset($this->inputs[$i]);
+        unset($this->inputs[$i-1]);
     }
 
     public function render()
     {
+
+        $this->cities = City::all();
+        return view('livewire.city-order');
+    }
+
+    public function mount()
+    {
         $cities = $this->line->cities;
         $this->i = count($cities);
-        $this->city_id = [0=>''];
-        $this->order = [0=>''];
+
         $cities_id = $cities->pluck('id')->toArray();
         $cities_order = $cities->pluck('pivot.order')->toArray();
         $this->inputs = range(1, $this->i);
@@ -48,35 +49,17 @@ class CityOrder extends Component
         foreach ($cities_order as $key => $order) {
             $this->order[$key + 1] = $order;
         }
-        $this->cities = City::all();
-        return view('livewire.city-order');
-    }
-
-    public function mount()
-    {
-
-
     }
 
     public function store()
     {
         $counter = $this->i + 1;
-        $validatedDate = $this->validate([
-            'city_id.' . $counter => "required_with:order.$counter|string",
-            'order.' . $counter => "required_with:city_id.$counter|string",
-        ],
-            [
-                'city_id.0.required' => 'city field is required',
-                'order.0.required' => 'city order field is required',
-                'city_id.*.required' => 'name field is required',
-                'order.*.required' => 'email field is required',
-            ]
-        );
+
 
         $inputs = [];
-        foreach ($this->city_id as $key => $value) {
-            if ($this->city_id[$key] != '' and $this->order[$key] != '') {
-                $inputs[$this->city_id[$key]] = ['order' => $this->order[$key]];
+        foreach ($this->inputs as $key => $value) {
+            if ($this->city_id[$value] != '' and $this->order[$value] != '') {
+                $inputs[$this->city_id[$value]] = ['order' => $this->order[$value]];
             }
         }
         $this->line->cities()->sync($inputs);
@@ -84,19 +67,22 @@ class CityOrder extends Component
 
         $this->resetInputFields();
 
-
-        /* $this->alert('success', 'City Line', [
-             'confirmButtonText' => 'Ok',
-             'cancelButtonText' => 'Cancel',
-             'showCancelButton' => true,
-             'showConfirmButton' => false,
-         ]);*/
+        $this->alert('success', 'City Line updated successfully !', [
+            'position' =>  'center',
+            'timer' =>  3000,
+            'toast' =>  false,
+            'text' =>  '',
+            'confirmButtonText' =>  'Ok',
+            'cancelButtonText' =>  'Cancel',
+            'showCancelButton' =>  true,
+            'showConfirmButton' =>  false,
+        ]);
 //        session()->flash('message', 'Users Created Successfully.');
     }
 
     private function resetInputFields()
     {
-        $this->city_id = '';
-        $this->order = '';
+        $this->city_id[$this->i+1] = 1;
+        $this->order[$this->i+1] = '';
     }
 }

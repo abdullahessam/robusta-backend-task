@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dedaa8553385dc4cd3d164def78a56ca",
+    "content-hash": "c218cdc7a6d217a164b34a4f83aeec2a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -909,6 +909,70 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
             "time": "2021-04-26T09:17:50+00:00"
+        },
+        {
+            "name": "jantinnerezo/livewire-alert",
+            "version": "2.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jantinnerezo/livewire-alert.git",
+                "reference": "e5e05f63c42b1410433a1c70d2a9a9d48939f949"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jantinnerezo/livewire-alert/zipball/e5e05f63c42b1410433a1c70d2a9a9d48939f949",
+                "reference": "e5e05f63c42b1410433a1c70d2a9a9d48939f949",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
+                "livewire/livewire": "^2.0",
+                "php": "^7.1|^7.2|^7.3|^7.4|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jantinnerezo\\LivewireAlert\\LivewireAlertServiceProvider"
+                    ],
+                    "aliases": {
+                        "LivewireAlert": "Jantinnerezo\\LivewireAlert\\LivewireAlertFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jantinnerezo\\LivewireAlert\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jantinn Erezo",
+                    "email": "erezojantinn@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package provides a simple alert utilities for your livewire components.",
+            "homepage": "https://github.com/jantinnerezo/livewire-alert",
+            "keywords": [
+                "jantinnerezo",
+                "livewire-alert"
+            ],
+            "support": {
+                "issues": "https://github.com/jantinnerezo/livewire-alert/issues",
+                "source": "https://github.com/jantinnerezo/livewire-alert/tree/2.1.6"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/jantinn",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-05-06T07:45:52+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -2052,60 +2116,6 @@
                 "source": "https://github.com/MarkBaker/PHPMatrix/tree/2.1.3"
             },
             "time": "2021-05-25T15:42:17+00:00"
-        },
-        {
-            "name": "matierenoire/laravel-livewire-swal",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/matiere-noire/laravel-livewire-swal.git",
-                "reference": "d496da6093fb4f82c145407982232e46461c5d95"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/matiere-noire/laravel-livewire-swal/zipball/d496da6093fb4f82c145407982232e46461c5d95",
-                "reference": "d496da6093fb4f82c145407982232e46461c5d95",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^5.5 || ^6.0 || ^7.0 || ^8.0",
-                "livewire/livewire": "^2.0",
-                "php": "^7.1|^7.2|^7.3|^7.4|^8.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "MN\\LivewireAlert\\LivewireAlertServiceProvider"
-                    ],
-                    "aliases": {
-                        "LivewireAlert": "MN\\LivewireAlert\\LivewireAlertFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "MN\\LivewireAlert\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matière Noire",
-                    "email": "developer@matierenoire.io"
-                }
-            ],
-            "description": "This package provides a simple alert utilities for your livewire components.",
-            "homepage": "https://github.com/matierenoire/laravel-livewire-swal",
-            "support": {
-                "issues": "https://github.com/matiere-noire/laravel-livewire-swal/issues",
-                "source": "https://github.com/matiere-noire/laravel-livewire-swal/tree/main"
-            },
-            "time": "2021-01-26T12:05:30+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -10408,9 +10418,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "matierenoire/laravel-livewire-swal": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
