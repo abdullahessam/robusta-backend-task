@@ -51,3 +51,6 @@ it will be created after running the seed command
 
 also here is the documentation for the api
 > https://documenter.getpostman.com/view/2535308/Tzedi589
+
+
+note: i didn't create unit testing classes yes 😥
