@@ -15,6 +15,11 @@ use JsonSchema\Exception\ValidationException;
 
 class ReservationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->only('store');
+    }
+
     public function index(IndexRequest $request)
     {
         $lines=Line::with('cities','trips')->hasValidTrip($request)->get();
@@ -26,7 +31,7 @@ class ReservationController extends Controller
     {
         $inputs=$request->validated();
         $trip=Trip::findOrFail($request['trip_id']);
-        $inputs['user_name']=$request['name'];
+        $inputs['user_id']=auth()->id();
         $inputs['dispatch_city_order']=$trip->line->getCityOrder($request['dispatch_city_id']);
         $inputs['destination_city_order']=$trip->line->getCityOrder($request['destination_city_id']);
         validateAvailableSeatNo($trip,$request['seat_no'],$inputs['dispatch_city_order'],$inputs['destination_city_order']);

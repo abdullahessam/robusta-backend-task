@@ -23,3 +23,17 @@
      $availableTickets=getAvailableTickets($bookedTickets);
      throw_unless(in_array($seat_no,$availableTickets),Illuminate\Validation\ValidationException::withMessages(['the seat is not available for this trip please chose anther seat !']));
  }
+
+class responder
+{
+    public static function success($data)
+    {
+        return response()->json(['status' => true, 'data' => $data]);
+    }
+
+    public static function error($data)
+    {
+        return response()->json(['status' => false, 'msg' => $data]);
+    }
+}
+

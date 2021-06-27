@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('register',[\App\Http\Controllers\Api\Auth\AuthController::class,'register']);
+Route::post('login',[\App\Http\Controllers\Api\Auth\AuthController::class,'login']);
 Route::resources([
     'reservations'=>\App\Http\Controllers\Api\ReservationController::class,
     'cities'=>\App\Http\Controllers\Api\CityController::class

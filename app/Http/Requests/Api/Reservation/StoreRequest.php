@@ -28,7 +28,6 @@ class StoreRequest extends FormRequest
             'destination_city_id'=>'required|exists:cities,id',
             'trip_id'=>'required|exists:trips,id',
             'seat_no'=>'required|integer|min:1|max:12',
-            'name'=>'required|string',
         ];
     }
 }

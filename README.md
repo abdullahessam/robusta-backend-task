@@ -41,6 +41,13 @@ dispatch_city_id |
 destination_city_id |
 name| user name
 
-the task is missing to main requirements the administration area and the auth system i mainly implements jwt auth system by using larave/sunctum  or laravel/passport 
-but i didn't have the much time for implementing the administration , auth system and the unit testing 
+i used laravel/breeze for dashboard auth
+here are the routes and credentials
+> /login
+>email : admin@admin.com
+> password :123456
 
+it will be created after running the seed command 
+
+also here is the documentation for the api
+> https://documenter.getpostman.com/view/2535308/Tzedi589
